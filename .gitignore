@@ -398,3 +398,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.db
+*.db
+*.db
+*.vcxproj
+*.filters
+DirectXFramework/DirectXFramework/x64/Debug/DirectXFramework.log
