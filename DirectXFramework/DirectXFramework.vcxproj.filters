@@ -17,6 +17,9 @@
     <Filter Include="ソース ファイル\System\Window">
       <UniqueIdentifier>{9b8cc891-bc02-497f-b7e6-8a9ce123d9bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Other">
+      <UniqueIdentifier>{7d6cdbd9-4d4f-4b3b-bfd7-f52978ba8b13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -25,6 +28,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>ソース ファイル\System\Window</Filter>
     </ClCompile>
+    <ClCompile Include="Pch.cpp">
+      <Filter>ソース ファイル\Other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -32,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>ソース ファイル\System\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Pch.h">
+      <Filter>ソース ファイル\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
