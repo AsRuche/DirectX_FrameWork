@@ -403,3 +403,4 @@ FodyWeavers.xsd
 *.db
 *.vcxproj
 *.filters
+DirectXFramework/DirectXFramework/x64/Debug/DirectXFramework.log
