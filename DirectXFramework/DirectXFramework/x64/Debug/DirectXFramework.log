@@ -1,8 +1,0 @@
-﻿  Application.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
-  Pch.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
-  Window.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
-  LINK : 前回のインクリメンタル リンクで C:\Users\ClestaSylvania\Documents\DirectX_FrameWork\DirectXFramework\x64\Debug\DirectXFramework.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  DirectXFramework.vcxproj -> C:\Users\ClestaSylvania\Documents\DirectX_FrameWork\DirectXFramework\x64\Debug\DirectXFramework.exe
