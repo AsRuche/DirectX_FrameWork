@@ -1,53 +1,45 @@
 #include "EntityManager.h"
+#include <cassert>
 
+namespace ECS {
 
-// コンストラクタ：利用可能なエンティティIDを初期化
-EntityManager::EntityManager() {
-	// 利用可能なエンティティIDを初期化
-	for (Entity entity = 0; entity < MAX_ENTITIES; ++entity) {
-		// エンティティIDを利用可能リストに追加
-		mAvailableEntities.push(entity);
-	}
-}
+    EntityManager::EntityManager() : livingEntityCount(0) {
+        // 利用可能なエンティティIDをキューに格納
+        for (Entity entity = 0; entity < MAX_ENTITIES; ++entity) {
+            availableEntities.push(entity);
+        }
+    }
 
-// エンティティの生成
-Entity EntityManager::CreateEntity() {
-	// エンティティ数が最大を超えないことを確認
-	assert(mLivingEntityCount < MAX_ENTITIES && "最大エンティティ数を超えました。");
+    Entity EntityManager::CreateEntity() {
+        assert(livingEntityCount < MAX_ENTITIES && "最大エンティティ数を超えました。");
 
-	// 利用可能なIDから新しいエンティティIDを取得
-	Entity id = mAvailableEntities.front(); // 先頭のエンティティIDを取得
-	mAvailableEntities.pop();				// 先頭のエンティティIDを削除
-	++mLivingEntityCount;                   // エンティティ数を増やす
+        Entity id = availableEntities.front();
+        availableEntities.pop();
+        ++livingEntityCount;
 
-	return id;
-}
+        return id;
+    }
 
-// エンティティの削除
-void EntityManager::DestroyEntity(Entity entity) {
-	// 有効なエンティティIDであることを確認
-	assert(entity < MAX_ENTITIES && "無効なエンティティIDです。");
+    void EntityManager::DestroyEntity(Entity entity) {
+        assert(entity < MAX_ENTITIES && "無効なエンティティIDです。");
 
-	// シグネチャをリセットし、IDを利用可能リストに戻す
-	mSignatures[entity].reset();        // シグネチャをリセット
-	mAvailableEntities.push(entity);    // 利用可能リストに戻す
-	--mLivingEntityCount;               // エンティティ数を減らす
-}
+        // シグネチャをリセット
+        signatures[entity].reset();
 
-// エンティティのシグネチャ設定
-void EntityManager::SetSignature(Entity entity, Signature signature) {
-	// 有効なエンティティIDであることを確認
-	assert(entity < MAX_ENTITIES && "無効なエンティティIDです。");
+        availableEntities.push(entity);
+        --livingEntityCount;
+    }
 
-	// 指定されたシグネチャをエンティティに設定
-	mSignatures[entity] = signature;
-}
+    void EntityManager::SetSignature(Entity entity, Signature signature) {
+        assert(entity < MAX_ENTITIES && "無効なエンティティIDです。");
 
-// エンティティのシグネチャ取得
-Signature EntityManager::GetSignature(Entity entity) {
-	// 有効なエンティティIDであることを確認
-	assert(entity < MAX_ENTITIES && "無効なエンティティIDです。");
+        signatures[entity] = signature;
+    }
 
-	// エンティティのシグネチャを返す
-	return mSignatures[entity];
+    Signature EntityManager::GetSignature(Entity entity) const {
+        assert(entity < MAX_ENTITIES && "無効なエンティティIDです。");
+
+        return signatures[entity];
+    }
+
 }
