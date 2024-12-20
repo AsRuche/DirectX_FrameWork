@@ -1,25 +1,23 @@
 #pragma once
 
 #include "Entity.h"
-#include "Component.h"
 
 namespace ECS {
 
-	// エンティティマネージャ（エンティティの生成、削除、シグネチャの設定）
+    // エンティティを管理するクラス
     class EntityManager {
     public:
-		EntityManager();                                        // コンストラクタ
+        EntityManager();
 
-		Entity CreateEntity();								    // エンティティの生成
-		void DestroyEntity(Entity entity);					    // エンティティの削除
+        // エンティティの生成
+        Entity CreateEntity();
 
-		void SetSignature(Entity entity, Signature signature);  //エンティティのシグネチャ設定
-        Signature GetSignature(Entity entity) const;
+        // エンティティの破棄
+        void DestroyEntity(Entity entity);
 
     private:
-		std::queue<Entity> availableEntities{};                 // 利用可能なエンティティIDのキュー
-		std::array<Signature, MAX_ENTITIES> signatures{};		// エンティティのシグネチャ
-		uint32_t livingEntityCount{};							// 現在のエンティティ数
+        std::queue<Entity> mAvailableEntities; // 再利用可能なエンティティID
+        Entity mNextEntityID; // 次に割り当てるエンティティID
     };
 
 }

@@ -1,19 +1,26 @@
 #pragma once
 
 #include "System.h"
-#include "Coordinator.h"
 #include "PositionComponent.h"
 #include "VelocityComponent.h"
+#include "ComponentType.h"
+#include "ArchetypeManager.h"
 
-class MovementSystem : public ECS::System {
-public:
-    void Update(ECS::Coordinator& coordinator, float deltaTime) {
-        for (auto const& entity : entities) {
-            auto& position = coordinator.GetComponent<PositionComponent>(entity);
-            auto& velocity = coordinator.GetComponent<VelocityComponent>(entity);
+namespace ECS {
 
-            position.x += velocity.x * deltaTime;
-            position.y += velocity.y * deltaTime;
-        }
-    }
-};
+    class MovementSystem : public System {
+    public:
+        MovementSystem();
+
+        // 基底クラスの Update メソッドをオーバーライド
+        void Update(float deltaTime) override;
+
+        // 必要に応じて ArchetypeManager をセットするメソッドを追加
+        void SetArchetypeManager(ArchetypeManager* manager);
+
+    private:
+        std::set<ComponentTypeID> mRequiredComponents;
+        ArchetypeManager* mArchetypeManager; // ArchetypeManager へのポインタ
+    };
+
+}

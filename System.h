@@ -1,13 +1,20 @@
 #pragma once
 
-#include "Entity.h"
-
-
 namespace ECS {
 
-    class System {
-    public:
-		std::set<Entity> entities;//エンティティの集合
-    };
+#pragma once
+
+    namespace ECS {
+
+        // システムの基底クラス
+        class System {
+        public:
+            virtual ~System() = default;
+
+            // Update メソッドの純粋仮想関数を定義
+            virtual void Update(float deltaTime) = 0;
+        };
+
+    }
 
 }

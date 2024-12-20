@@ -2,7 +2,10 @@
 
 namespace ECS {
 
+	//エンティティを表す定義型
 	using Entity = std::uint32_t;
-	const Entity MAX_ENTITIES = 50000; // 最大エンティティ数
+
+	//エンティティの最大数
+	const Entity MAX_ENTITIES = 50000;
 
 }
