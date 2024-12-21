@@ -16,6 +16,13 @@ bool Application::AppRun()
 		return false;
 	}
 
+	// Renderer 初期化
+	HWND hWnd = m_window.GetHwnd(); // (Window クラスに GetHwnd() のような取得関数を用意)
+	if (!m_renderer.Initialize(hWnd, 1280, 720))
+	{
+		return false;
+	}
+
 	//ウィンドウが破棄されるまでメッセージループ
 	while (true)
 	{
@@ -26,6 +33,12 @@ bool Application::AppRun()
 
 			break;
 		}
+
+		// 描画処理
+		float clearColor[4] = { 0.2f, 0.4f, 0.6f, 1.0f }; // RGBA
+		m_renderer.BeginFrame(clearColor);
+		// ここでモデル描画やスプライト描画を入れていく
+		m_renderer.EndFrame();
 	}
 
 	return true;

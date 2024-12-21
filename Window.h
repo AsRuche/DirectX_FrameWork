@@ -18,7 +18,10 @@ public:
 	/// </summary>
 	/// <returns>ウィンドウが破棄されたらfalseを返す</returns>
 	bool ProcessMessage();
+
+
+	HWND GetHwnd() { return m_hWnd; }	//ウィンドウハンドルの取得
 private:
-	HWND m_hWnd;
+	HWND m_hWnd;	//ウィンドウハンドル
 };
 

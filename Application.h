@@ -1,5 +1,6 @@
 #pragma once
 #include"Window.h"
+#include"Renderer.h"
 
 class Application
 {
@@ -10,6 +11,7 @@ public:
 	bool AppRun();
 private:
 	Window m_window;	//ウィンドウクラスのインスタンス
+	Renderer m_renderer;
 	Application() {}	//コンストラクタ
 public:
 	/// <summary>
